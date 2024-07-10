@@ -1,0 +1,22 @@
+.container-for-brands-part {
+    background-color: #0F0F0F;
+}
+.brand-container {
+    max-width: calc(69vw);
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 40px;
+    padding: 60px 0 80px 0
+}
+.title-brand {
+    font-size: 2vw;
+    text-align: center;
+}
+.brands-icons {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.brand-icon {
+    width: 13vw;
+}
