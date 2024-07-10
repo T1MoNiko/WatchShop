@@ -4,7 +4,7 @@ import React from "react"
 
 import { useState, useEffect } from "react"
 
-import { ProductCard } from "../ProductCard"
+import { ProductCard } from "../product/ProductCard"
 
 import { Products } from "../../redux/CartSlice/types"
 

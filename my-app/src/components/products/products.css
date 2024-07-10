@@ -32,7 +32,11 @@ html {
 .products-items {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
+.products-items > div:nth-child(2) {
+    margin: 0 20px;
+}  
 .product-name { 
     color: white;
     font-size: 1.1vw;
@@ -44,14 +48,6 @@ html {
     text-align: start;
     margin-top: 1.85vh;
     font-size: 1vw;
-}
-.img-product-item {
-    background-color: #191B1C;
-    padding: 5vw 1.15vw;
-    width: 13.5vw;
-    background-position: center;
-    background-size: cover;
-    box-sizing: border-box;
 }
 .new-colaction {
     background: url("../../../public/img/pic1.png") center;
