@@ -39,7 +39,7 @@ export const ProductCard: React.FC<Products> = ({ title, price, imageUrl, id }) 
     const cartClickHandler = () => {
         if (!activeCart) {
             setActiveCart(true)
-            dispatch(addToCart({title, price, imageUrl, id})) 
+            dispatch(addToCart({title, price, imageUrl, id, count: 1})) 
         } else if (activeCart) {
             setActiveCart(false)
             dispatch(deleteFromCart(id))
@@ -48,8 +48,10 @@ export const ProductCard: React.FC<Products> = ({ title, price, imageUrl, id }) 
 
     return (
         <div className="product-item">
-            <img onClick={() => likeClickHandler()} src="./img/heart.png" alt="" className={activeLike ? "img-product-like-active" : "img-product-like"} />
-            <img onClick={() => cartClickHandler()} src="./img/cart.png" alt="" className={activeCart ? "img-product-cart-active" : "img-product-cart"} />
+            <img onClick={() => likeClickHandler()} src="./img/heart.png" alt="" 
+                 className={activeLike ? "img-product-like-active" : "img-product-like"} />
+            <img onClick={() => cartClickHandler()} src="./img/cart.png" alt="" 
+                 className={activeCart ? "img-product-cart-active" : "img-product-cart"} />
             <img className="img-product-item" src={imageUrl} alt=""  />
             <p className="product-name">{title}</p>
             <p className="product-price">{price} руб.</p>

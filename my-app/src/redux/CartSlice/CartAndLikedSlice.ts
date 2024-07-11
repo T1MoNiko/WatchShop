@@ -10,7 +10,6 @@ const CartAndLikedSlice = createSlice({
     reducers: {
         addToCart(state, action: PayloadAction<Products>) {
             state.cartItems.push({...action.payload})
-            console.log(state.cartItems)
         },
         addToLiked(state, action: PayloadAction<Products>) {
             state.likedItems.push({...action.payload})
@@ -20,9 +19,25 @@ const CartAndLikedSlice = createSlice({
         },
         deleteFromCart(state, action: PayloadAction<number>) {
             state.cartItems = state.cartItems.filter((obj) => Number(obj.id) !== Number(action.payload))
-         }
+        },
+        counterIncrement(state, action) {
+                state.cartItems = state.cartItems.map(item => {
+                    if (item.id === action.payload) {
+                        return {...item, count: item.count ? ++item.count : 1}
+                    }
+                    return item
+                })
+        },
+        counterDecrement(state, action) {
+            state.cartItems = state.cartItems.map(item => {
+                if (item.id === action.payload) {
+                    return {...item, count: item.count && (item.count - 1) > 0 ? --item.count : 1}
+                }
+                return item
+            })
+    }
     }
 })
 
-export const { addToCart, addToLiked, deleteFromLiked, deleteFromCart } = CartAndLikedSlice.actions
+export const { addToCart, addToLiked, deleteFromLiked, deleteFromCart, counterIncrement, counterDecrement } = CartAndLikedSlice.actions
 export const CartAndLikedSliceReducer = CartAndLikedSlice.reducer

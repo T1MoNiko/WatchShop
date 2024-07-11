@@ -1,4 +1,4 @@
-export const totalPrice = (item) => {
-    const price = item.reduce((sum, next) => Number(sum) + Number(next.price), 0)
+export const totalPrice = (items) => {
+    const price = items.reduce((sum, next) => Number(sum) + Number(next.price) * next.count, 0)
     return price
 }

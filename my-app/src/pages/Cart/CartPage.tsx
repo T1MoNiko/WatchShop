@@ -2,10 +2,10 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import React from "react"
 
-import { CartCard } from "../../components/CartCard"
+import { CartCard } from "../../components/cartCard/CartCard"
 import { totalPrice } from "../../utils/totalPrice"
 import { RootState } from "../../redux/store"
-
+import BtnBack from "../../components/btnBack/BtnBack"
 
 const CartPage: React.FC = () => {
 
@@ -13,22 +13,7 @@ const CartPage: React.FC = () => {
 
     return (
         <>
-        <Link to="/">
-                    <div id="arrowAnim">
-                            <div className="arrowSliding">
-                                <div className="arrow"></div>
-                            </div>
-                            <div className="arrowSliding delay1">
-                                <div className="arrow"></div>
-                            </div>
-                            <div className="arrowSliding delay2">
-                                <div className="arrow"></div>
-                            </div>
-                            <div className="arrowSliding delay3">
-                                <div className="arrow"></div>
-                            </div>
-                        </div>
-                </Link>
+        <BtnBack/>
         {cartItems.length ?
             (
             <>

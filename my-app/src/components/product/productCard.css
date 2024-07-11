@@ -16,11 +16,20 @@
     transition: all .3s ease-in-out;
     cursor: pointer;
 }
-.img-product-like-active, .img-product-added-active {
+.img-product-like-active {
     position: absolute;
     width: 13%;
     top: 15px;
     right: calc(15% + 30px);
+    opacity: 0.25;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+.img-product-added-active {
+    position: absolute;
+    width: 13%;
+    top: 15px;
+    right: 25px;
     opacity: 0.25;
     transition: all .3s ease-in-out;
     cursor: pointer;

@@ -4,6 +4,7 @@ export type Products = {
     title: string,
     price: number,
     imageUrl: string 
+    count?: number
 }
 export type CartState = {
     cartItems: Products[],
