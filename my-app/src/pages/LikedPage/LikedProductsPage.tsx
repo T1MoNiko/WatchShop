@@ -2,10 +2,10 @@ import "./likedProducts.css"
 
 import React from "react"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
 
 import { LikeCard } from "../../components/LikeCard"
 import { RootState } from "../../redux/store"
+import BtnBack from "../../components/btnBack/BtnBack"
 
 
 const LikedPage: React.FC = () => {
@@ -13,24 +13,8 @@ const LikedPage: React.FC = () => {
     const  { likedItems } = useSelector((state: RootState) => state.CartAndLikedSliceReducer)
     
     return (
-            <>
-            <Link to="/">
-                <div id="arrowAnim">
-                    <div className="arrowSliding">
-                        <div className="arrow"></div>
-                    </div>
-                    <div className="arrowSliding delay1">
-                        <div className="arrow"></div>
-                    </div>
-                    <div className="arrowSliding delay2">
-                        <div className="arrow"></div>
-                    </div>
-                    <div className="arrowSliding delay3">
-                        <div className="arrow"></div>
-                    </div>
-                </div>
-            </Link>
-                
+        <>
+            <BtnBack/> 
             {likedItems.length ? 
             <div className="wrapper-liked">
                 {likedItems.map((product, key) => {
