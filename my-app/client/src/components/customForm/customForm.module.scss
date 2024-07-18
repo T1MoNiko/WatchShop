@@ -1,0 +1,33 @@
+.form {
+    padding: 20px;
+    width: 325px;
+    height: 400px;
+    background-color: rgb(69, 69, 69);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    button {
+        display: inline-block;
+        width: fit-content;
+        padding: 5px 20px;
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        margin: 0 auto;
+        margin-top: 30px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border-radius: 3px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+}
