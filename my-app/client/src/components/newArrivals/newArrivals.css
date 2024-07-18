@@ -1,0 +1,36 @@
+.container-wrapper .product-item {
+    margin-top: 2vw;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+}
+.container-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+    margin-top: -2vw;
+    width: 65%;
+    gap: 10px;
+}
+.container-wrapper::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.newArrivals {
+    text-align: center;
+    margin-top: 50px;
+}
+.arrivals-title {
+    font-size: 2vw;
+}
+
+.product-item:hover > .img-product-like, .product-item:hover > .img-product-cart {
+    opacity: 0.4;
+}
+
+
+.product-item:hover > .img-product-like-active,
+.product-item:hover > .img-product-cart-active,
+.product-item-added:hover > .img-product-added-active {
+    opacity: 0.9;
+}

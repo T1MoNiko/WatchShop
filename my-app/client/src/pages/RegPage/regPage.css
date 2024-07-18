@@ -1,0 +1,151 @@
+.registration-box {
+    text-align: center;
+    width: 350px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, rgba(54,54,52,1) 7%, rgba(36,36,34,1) 50%);
+    box-shadow: 5px 5px 5px gray;
+    animation: 1s ease-in-out registration-box;
+}
+
+.registration-input {
+    border: none;
+    background: transparent;
+    border-bottom: #FFD700 1px solid;
+    padding: 10px 60px 10px 0;
+    margin-top: 30px;
+    color: white;
+    outline: none;
+    animation: 1.5s ease-in-out input-change;
+}
+
+.registration-box > h1 {
+    color: #FFD700;
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.registration-box > div:first-child {
+    margin-top: 20%;
+}
+
+.registration-box div:last-child {
+    display: flex;
+}
+
+.registration-input::placeholder {
+    color: #B8860B;
+}
+
+.registration-button-active {
+    display: block;
+    margin: 0 auto ;
+    border: none;
+    background: #FFD700;
+    width: 60%;
+    font-size: 20px;
+    padding: 13px 0;
+    margin-top: 7%;
+    cursor: pointer;
+    animation: 0s ease-in-out input-change;
+}
+
+.registration-button-disabled {
+    display: block;
+    margin: 0 auto ;
+    border: none;
+    background: #b99e03;
+    box-shadow: 0 0 10px 1px #FFD700;
+    width: 60%;
+    font-size: 20px;
+    padding: 10px 0;
+    margin-top: 7%;
+    cursor: pointer;
+    color: black;
+    animation: 2s ease-in-out input-change;
+}
+
+.input-container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    animation: 1.5s ease-in-out input-change;
+}
+
+.input-container > input{
+    padding: 0;
+    margin: 0;
+}
+
+.input-container > p{
+    width: 65%;
+    font-size: 15px;
+    color: #FFD700;
+}
+
+.input-error {
+    color: red;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity ease 0.5s;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+.modal-close::before,
+.modal-close::after {
+    content: '';
+    background: white;
+    position: absolute;
+    top: 10px;
+    display: block;
+    width: 24px;
+    height: 3px;
+}
+
+.modal-close::before {
+    transform: rotate(45deg);
+}
+
+.modal-close::after {
+    transform: rotate(-45deg);
+}
+@keyframes reg-box {
+    from {
+        opacity: 0;
+        height: 50px;
+    } to {
+        opacity: 1;
+        height: 500px;
+    }
+}
+@keyframes inputsChange {
+    10% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

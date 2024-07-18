@@ -1,0 +1,71 @@
+footer {
+    background: url("../../../public/img/pic3.png") center no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    padding: 5.2vw 0 6.5vw 0;
+}
+.footer-container {
+    max-width: 69vw;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+.about-shop, .categories, .mailing-list {
+    width: 31%;
+}
+.title-mailing-list, .title-categories, .title-about-shop {
+    font-size: 1.5vw;
+    margin-bottom: 30px;
+}
+.text-mailing-list, .text-about-shop {
+    font-size: 0.9vw;
+}
+.btn-categories {
+    float: left;
+    margin: 1.4vw 1vw 0 1vw;
+    color: white;
+    font-size: 1vw;
+    background: black;
+    padding: 0.9vw 0.9vw;
+}
+.btns-categories {
+    margin: -30px -15px 0 -15px;
+}
+.input-btn {
+    display: flex;
+    margin-top: 25px;
+}
+.input-btn button {
+    background: black;
+    color: white;
+    font-size: 0.9vw;
+    padding: 1vw 1vw;
+    width: 40%;
+    box-sizing: border-box;
+}
+.input-btn input {
+    background: rgba(255, 255, 255, 0.4);
+    padding-left: 1vw;
+    width: 60%;
+    outline: none;
+    font-size: 1vw;
+}
+.input-btn input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+.line-under-footer {
+    width: 69vw;
+    margin: 0 auto;
+}
+.roots {
+    padding: 10px 0;
+    font-size: 0.75vw;
+}
+.input-btn > button {
+    transition: 1s;
+}
+.input-btn > button:hover {
+    background: white;
+    color: black;
+    cursor: pointer
+}

@@ -1,0 +1,17 @@
+.cart-product-item__counter {
+    display: flex;
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    align-items: center;
+}
+.cart-counter-btn {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+    background-color: #222629;
+    color: white;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+}
