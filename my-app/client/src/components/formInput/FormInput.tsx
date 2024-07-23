@@ -3,7 +3,7 @@ import { RegisterOptions, UseFormRegister } from "react-hook-form";
 import { FormFields } from "../customForm/types";
 import styles from "./formInput.module.scss"
 
-const FormInput = ({error, register, type, placeholder, options, fieldName}: FormFields) => {
+const FormInput: React.FC<FormFields> = ({error, register, type, placeholder, options, fieldName}) => {
     return (
         <>
             <input 
@@ -11,6 +11,7 @@ const FormInput = ({error, register, type, placeholder, options, fieldName}: For
                 placeholder={placeholder}
                 {...register(fieldName, options)}
                 className={styles.formInput}  
+                autoComplete="false"
                 />
             {
                 error && <p className={styles.formErrorText}>{error}</p>

@@ -2,7 +2,7 @@ import { RegisterOptions, UseFormRegister } from "react-hook-form";
 
 export interface Validation {
     firstName: string;
-    secondName: string;
+    lastName: string;
     email: string;
     password: string;
 }
@@ -13,5 +13,5 @@ export interface FormFields {
     type: string;
     placeholder: string;
     options: RegisterOptions<Validation>;
-    fieldName: "email" | "password" | "firstName" | "secondName";
+    fieldName: "email" | "password" | "firstName" | "lastName";
 }

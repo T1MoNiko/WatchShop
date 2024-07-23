@@ -10,21 +10,21 @@ import { RootState } from "../../redux/store";
 
 const Header: React.FC = () => {
 
-    const { account } = useSelector((state: RootState) => state.AccountReducer.data)
+    // const { account } = useSelector((state: RootState) => state.AccountReducer.data)
 
     return (
         <header>
             <div className="line-reg">
                 <p className="number">8 (812) 123-45-67    |    Работаем 7 дней в неделю    |    9:00 — 18:00  </p>
                 {
-                    account ? null : <Link to="reg"><p className="reg-and-sign_in">Войти / Регистрация</p></Link>
+                    // account ? null : <Link to="reg"><p className="reg-and-sign_in">Войти / Регистрация</p></Link>
                 }
             </div>
             <nav className="navigation">
                 <img src={"./img/logo.png"} className="logo" alt="" />
                 <div className="menu-links">
                     <ul className="btns-on-header">
-                        <li className="link-on-header"><Link to={account ? 'account' : 'reg'}>личный кабинет</Link></li>
+                        {/* <li className="link-on-header"><Link to={account ? 'account' : 'reg'}>личный кабинет</Link></li> */}
                     </ul>
                     <div>
                         <Link to="cart"><img src={"./img/cart.png"} alt="" className="cart" /></Link> 

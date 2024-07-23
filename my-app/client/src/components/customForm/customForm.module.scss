@@ -10,6 +10,9 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    animation-name: appearance;
+    animation-duration: .5s;
+    user-select: none;
 
     button {
         display: inline-block;
@@ -29,5 +32,29 @@
 
     h1 {
         font-size: 25px;
+    }
+
+    p {
+        position: absolute;
+        bottom: 70px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-size: 12px;
+        cursor: pointer;
+        font-style: italic;
+        user-select: none;
+    }
+}
+
+.inputBox {
+    height: calc(80% - 70px - 26px); 
+    margin-top: 20px;
+}
+
+@keyframes appearance {
+    from {
+        opacity: 0.1;
+    } to {
+        opacity: 1;
     }
 }

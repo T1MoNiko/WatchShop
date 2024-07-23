@@ -1,69 +1,93 @@
-import React from "react";
-import { RegisterOptions, UseFormRegister, useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import FormInput from "../formInput/FormInput";
-import { FormFields, Validation } from "./types";
+import { Validation } from "./types";
 import styles from "./customForm.module.scss"
+import axios, { AxiosResponse } from "axios";
+import { instance } from "../../utils/axiosConfig";
+import { formData } from "../../utils/formData";
+import { RootState, useAppDispatch } from "../../redux/store";
+import { setAuth } from "../../redux/PrivatOfficeSlice/PrivatOfficeSlice";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CustomForm = () => {
+    const [isRegistration, setIsRegistration] = useState(true);
     const { register, handleSubmit, formState } = useForm<Validation>({
         mode: "onSubmit"
     })
-          
+    const history = useNavigate()
+    const isAuth = useSelector((state: RootState) => state.AccountReducer.isAuth)
+    const data = formData(formState),
+          dispatch = useAppDispatch()
 
-    const onSubmit = (data: Validation) => { 
-        console.log(data)
+    useEffect(() => {
+        if (isAuth) {
+            history('/account')
+        }
+    }, [isAuth])
+
+
+    useEffect(() => {
+        instance().post('/auth/profile')
+        .then(res => res.data ? dispatch(setAuth(true)) : null)
+        .catch(err => console.log(err))
+    }, [])
+
+    const onSubmitReg = async (formData: Validation) => { 
+        // try {
+        //     const {data}: {data: Validation} = await axios.post('http://localhost:5000/user', formData)
+        //     const token: AxiosResponse | null = data ? await axios.post('http://localhost:5000/auth/login', 
+        //                                             {email: data.email, password: formData.password}) : null
+
+        //     console.log(token)
+        //     if (token?.data.access_token) {
+        //         await axios.post('http://localhost:5000/cookies', {"access_token": token.data.access_token}, { withCredentials: true })
+        //         await axios.get('http://localhost:5000/cookies')
+        //     }
+        // } catch(err) {
+        //     console.log(err)
+        // }
+
+        try {
+            const {data}: {data: Validation} = await axios.post('http://localhost:5000/user', formData)
+            const token: AxiosResponse | null = data ? await axios.post('http://localhost:5000/auth/login', 
+                                                    {email: data.email, password: formData.password}) : null
+
+            if (token?.data.access_token && typeof window !== 'undefined') {
+                localStorage.setItem('access_token', token.data.access_token)
+                history('/account')
+            }
+        } catch(err) {
+            console.log(err)
+        }
     }
 
-    const formFieldsInfo: Omit<FormFields, 'register'>[] = [
-        {
-            type: "text",
-            placeholder: "Enter first name",
-            error: formState.errors['firstName']?.message,
-            fieldName: "firstName",
-            options: {
-                required: "This field is required",  
-                maxLength: 50
-            }
-        },
-        {
-            type: "text",
-            placeholder: "Enter second name",
-            error: formState.errors['secondName']?.message,
-            fieldName: "secondName",
-            options: {
-                required: "This field is required", 
-                maxLength: 50
-            }
-        },
-        {
-            type: "email",
-            placeholder: "Enter email",
-            error: formState.errors['email']?.message,
-            fieldName: "email",
-            options: {
-                required: "This field is required", 
-                pattern: {
-                    value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                    message: "Invalid email"
-                }}
-        },
-        {
-            type: "password",
-            placeholder: "Enter password",
-            error: formState.errors['password']?.message,
-            fieldName: "password",
-            options: {
-                required: "This field is required", 
-                minLength: {value: 8, message: "Password should consist minimum of 8 characters"}
-            }
-        }
-]
+    const onSubmitLog = async (formData: Omit<Validation, 'firstName' & 'secondName'>) => {
+        const { data } = await axios.post('http://localhost:5000/auth/login', formData)
+        if (typeof window !== undefined) {
+            localStorage.setItem('access_token', data.access_token)
+            history('/account')
+        };
+    }
+
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-                <h1>Registration</h1>
-                {formFieldsInfo.map((item, i) => (
+            <form onSubmit={handleSubmit(isRegistration ? onSubmitReg : onSubmitLog)} className={styles.form}>
+                <h1>{isRegistration ? "Registration" : "Login"}</h1>
+                <div className={styles.inputBox}>
+                {isRegistration ? data.regData.map((item, i) => (
+                    <FormInput 
+                        key={i}
+                        type={item.type} 
+                        placeholder={item.placeholder}
+                        register={register} 
+                        error={item.error}
+                        fieldName={item.fieldName}
+                        options={item.options}
+                    />
+                )) : data.loginData.map((item, i) => (
                     <FormInput 
                         key={i}
                         type={item.type} 
@@ -74,8 +98,10 @@ const CustomForm = () => {
                         options={item.options}
                     />
                 ))}
+                </div>
+                <p onClick={() => setIsRegistration(!isRegistration)}>{isRegistration ? "Login" : "Register"}</p>
                 
-                <button type="submit">Register</button>
+                <button type="submit">{isRegistration ? "Register" : "Login"}</button>
             </form>
         </>
     );
