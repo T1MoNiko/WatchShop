@@ -3,7 +3,7 @@ import "./cartCard.css"
 
 import React from "react"
 
-import { counterDecrement, counterIncrement, deleteFromCart } from "../../redux/CartSlice/CartAndLikedSlice"
+import { counterDecrement, counterIncrement, deleteFromCart } from "../../redux/CartSlice/ProductsSlice"
 import { Products } from "../../redux/CartSlice/types"
 import { useAppDispatch } from "../../redux/store"
 

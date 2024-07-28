@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import { addToLiked, deleteFromLiked, addToCart, deleteFromCart } from "../../redux/CartSlice/CartAndLikedSlice"
+import { addToLiked, deleteFromLiked, addToCart, deleteFromCart } from "../../redux/CartSlice/ProductsSlice"
 import { useDispatch } from "react-redux/es/exports"
 import { useSelector } from "react-redux/es/exports"
 import { RootState } from "../../redux/store"
