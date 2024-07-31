@@ -1,8 +1,8 @@
 import React from "react" 
 
 import { useAppDispatch } from "../redux/store"
-import { deleteFromLiked } from "../redux/CartSlice/ProductsSlice"
-import { Products } from "../redux/CartSlice/types"
+import { Products } from "../redux/ProductsSlice/types"
+import { deleteFromLiked } from "../redux/ProductsSlice/ProductsSlice"
 
 export const LikeCard: React.FC<Products> = ({id, title, imageUrl, price}) => {
 

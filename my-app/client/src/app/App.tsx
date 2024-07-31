@@ -7,10 +7,12 @@ import LikedPage from "../pages/LikedPage/LikedProductsPage"
 import RegPage from "../pages/RegPage/RegPage"
 // import AccountPage from "../pages/AccountPage/AccountPage";
 import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState, useAppDispatch } from "../redux/store";
+import { fetchData } from "../redux/ProductsSlice/ProductsSlice";
 
 const App: React.FC = () => {
     const isMounted = useRef(false)
+    const dispatch = useAppDispatch()
 
     const { ...rest } = useSelector((state: RootState) => state.CartAndLikedSliceReducer)
     // const { data } = useSelector((state: RootState) => state.AccountReducer)
@@ -30,6 +32,10 @@ const App: React.FC = () => {
     //       }
     //       isMounted.current = true
     //     }, [data])
+
+    useEffect(() => {
+      dispatch(fetchData())
+    }, [])
 
   return (
     <Routes>

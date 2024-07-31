@@ -9,5 +9,7 @@ export type Products = {
 export type CartState = {
     cartItems: Products[],
     likedItems: Products[],
-    // status: string
+    cartLoading: boolean,
+    likedLoading: boolean,
+    error: null | unknown
 }

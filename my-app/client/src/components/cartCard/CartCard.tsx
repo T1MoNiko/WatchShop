@@ -3,9 +3,10 @@ import "./cartCard.css"
 
 import React from "react"
 
-import { counterDecrement, counterIncrement, deleteFromCart } from "../../redux/CartSlice/ProductsSlice"
-import { Products } from "../../redux/CartSlice/types"
+import { counterDecrement, counterIncrement, deleteFromCart } from "../../redux/ProductsSlice/ProductsSlice"
+
 import { useAppDispatch } from "../../redux/store"
+import { Products } from "../../redux/ProductsSlice/types"
 
 export const CartCard: React.FC<Products> = ({id, title, imageUrl, price, count}) => {
 

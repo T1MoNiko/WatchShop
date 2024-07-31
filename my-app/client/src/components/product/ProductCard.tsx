@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
 
-import { addToLiked, deleteFromLiked, addToCart, deleteFromCart } from "../../redux/CartSlice/ProductsSlice"
+import { addToLiked, deleteFromLiked, addToCart, deleteFromCart } from "../../redux/ProductsSlice/ProductsSlice"
 import { useDispatch } from "react-redux/es/exports"
 import { useSelector } from "react-redux/es/exports"
 import { RootState } from "../../redux/store"
-import { Products } from "../../redux/CartSlice/types"
 import "./productCard.css"
+import { Products } from "../../redux/ProductsSlice/types"
 
 export const ProductCard: React.FC<Products> = ({ title, price, imageUrl, id }) => {
     const [activeLike, setActiveLike] = useState(false);

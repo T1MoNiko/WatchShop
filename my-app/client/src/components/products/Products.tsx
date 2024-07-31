@@ -5,8 +5,9 @@ import React from "react"
 import { useState, useEffect } from "react"
 
 import { ProductCard } from "../product/ProductCard"
+import { Products } from "../../redux/ProductsSlice/types"
 
-import { Products } from "../../redux/CartSlice/types"
+
 
 const ProductsPart: React.FC = () => {
     const [res, setRes] = useState<Products[]>([]);

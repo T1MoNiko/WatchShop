@@ -1,25 +1,26 @@
 // src/store/userSagas.ts
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, take, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from './userSlice';
 import { instance } from '../utils/axiosConfig';
 import { SagaIterator } from 'redux-saga';
 import { useAppDispatch } from '../redux/store';
-import { addToCart, addToLiked } from '../redux/CartSlice/ProductsSlice';
+import { addToCart, addToLiked, failureData, fetchData } from '../redux/ProductsSlice/ProductsSlice';
 
-const dispatch = useAppDispatch()
 
-function* fetchUserSaga(): SagaIterator {
+
+function* fetchProductsSaga(): SagaIterator {
+
   try {
-    const response = yield call(instance().get, '/cart');
-    yield put(dispatch(addToCart()));
-  } catch (err) {
-    yield ;
+    const { data } = yield call(instance().get, '/cart');
+    yield put(addToCart(data));
+    yield put((data));
+  } catch (error) {
+    yield put(failureData(error))
   }
 }
 
-function* userSaga() {
-  yield takeLatest(fetchUserRequest.type, fetchUserSaga);
+function* productsSaga() {
+  yield takeLatest(fetchData, fetchProductsSaga)
 }
 
-export default userSaga;
+export default productsSaga;

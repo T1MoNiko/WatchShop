@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import createSagaMiddleware from 'redux-saga'
-
-import { CartAndLikedSliceReducer } from "./CartSlice/ProductsSlice"; 
+ 
 import { AccountReducer } from "./PrivatOfficeSlice/PrivatOfficeSlice";
+import { rootSaga } from "../sagas/rootSaga";
+import { CartAndLikedSliceReducer } from "./ProductsSlice/ProductsSlice";
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -15,7 +16,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)
 })
 
-sagaMiddleware.run()
+sagaMiddleware.run(rootSaga)
 
 type AppDispatch = typeof store.dispatch;
 
