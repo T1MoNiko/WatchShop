@@ -1,15 +1,22 @@
 
 export type Products = {
     id: number,
-    title: string,
+    name: string,
     price: number,
-    imageUrl: string 
-    count?: number
+    img: string ,
+    product_id?: number,
+    count?: number,
+    isCatalogProduct?: boolean,
+    isSeasonProduct?: boolean
 }
 export type CartState = {
+    products: Products[],
     cartItems: Products[],
     likedItems: Products[],
     cartLoading: boolean,
     likedLoading: boolean,
-    error: null | unknown
+    productsLoading: boolean,
+    cartError: null | unknown,
+    likedError: null | unknown,
+    productsError: null | unknown
 }

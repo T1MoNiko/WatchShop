@@ -1,8 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getDataFromLSCL } from "../../utils/getDataFromLSCL";
 import { CartState, Products } from "./types"; 
 
-const initialState: CartState = getDataFromLSCL()
+const initialState: CartState = {
+    cartLoading: false,
+    likedLoading: false,
+    productsLoading: false,
+    cartItems: [],
+    likedItems: [],
+    products: [],
+    cartError: null,
+    likedError: null,
+    productsError: null
+}
 
 const CartAndLikedSlice = createSlice({
     name: "products",
@@ -11,25 +20,40 @@ const CartAndLikedSlice = createSlice({
         fetchData(state) {
             state.cartLoading = true
             state.likedLoading = true
+            state.productsLoading = true
         },
-        failureData(state, action: PayloadAction<unknown>) {
+        failureCartData(state, action: PayloadAction<any>) {
             state.cartLoading = false
+            console.log(action.payload)
+        },
+        failureLikedData(state, action: PayloadAction<{status: number, message: string}>) {
             state.likedLoading = false
-            state.error = action.payload
+            state.likedError = action.payload
         },
-        addToCart(state, action: PayloadAction<Products>) {
-            state.cartLoading = true
-            state.cartItems.push({...action.payload})
+        failureProductsData(state, action: PayloadAction<unknown>) {
+            state.productsLoading = false
+            state.productsError = action.payload
         },
-        addToLiked(state, action: PayloadAction<Products>) {
-            state.likedLoading = true
-            state.likedItems.push({...action.payload})
+        addToCart(state, action: PayloadAction<Products[]>) {
+            state.cartLoading = false
+            state.cartItems.push(...action.payload)
+        },
+        addToLiked(state, action: PayloadAction<Products[]>) {
+            state.likedLoading = false
+            state.likedItems.push(...action.payload)
+        },
+        addToProducts(state, action: PayloadAction<Products[]>) {
+            state.productsLoading = false
+            state.products.push(...action.payload)
         },
         deleteFromLiked(state, action: PayloadAction<number>) {
             state.likedItems = state.likedItems.filter((obj) => Number(obj.id) !== Number(action.payload))
         },
         deleteFromCart(state, action: PayloadAction<number>) {
             state.cartItems = state.cartItems.filter((obj) => Number(obj.id) !== Number(action.payload))
+        },
+        deleteFromProducts(state, action: PayloadAction<number>) {
+            state.products = state.products.filter((obj) => Number(obj.id) !== Number(action.payload))
         },
         counterIncrement(state, action) {
             state.cartItems = state.cartItems.map(item => {
@@ -50,5 +74,5 @@ const CartAndLikedSlice = createSlice({
     }
 })
 
-export const { fetchData, failureData, addToCart, addToLiked, deleteFromLiked, deleteFromCart, counterIncrement, counterDecrement } = CartAndLikedSlice.actions
+export const { fetchData, failureCartData, failureLikedData, failureProductsData, addToCart, addToLiked, addToProducts, deleteFromLiked, deleteFromCart, counterIncrement, counterDecrement } = CartAndLikedSlice.actions
 export const CartAndLikedSliceReducer = CartAndLikedSlice.reducer

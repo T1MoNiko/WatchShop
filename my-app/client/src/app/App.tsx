@@ -9,33 +9,24 @@ import RegPage from "../pages/RegPage/RegPage"
 import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../redux/store";
 import { fetchData } from "../redux/ProductsSlice/ProductsSlice";
+import { instance } from "../utils/axiosConfig";
+import { setAuth } from "../redux/PrivatOfficeSlice/PrivatOfficeSlice";
+import AccountPage from "../pages/AccountPage/AccountPage";
 
 const App: React.FC = () => {
-    const isMounted = useRef(false)
     const dispatch = useAppDispatch()
-
-    const { ...rest } = useSelector((state: RootState) => state.CartAndLikedSliceReducer)
-    // const { data } = useSelector((state: RootState) => state.AccountReducer)
-
-    // useEffect(() => {
-    //     if (isMounted.current) {
-    //       localStorage.setItem("cartAndLiked", JSON.stringify(rest))
-    //     }
     
-    //     isMounted.current = true
-    //   }, [rest, rest.likedItems, rest.cartItems])
-      
-    //   useEffect(() => {
-    //       if (isMounted.current) {
-    //         localStorage.setItem("account", JSON.stringify(data))
-
-    //       }
-    //       isMounted.current = true
-    //     }, [data])
+    useEffect(() => {
+      instance().post('/auth/profile')
+      .then(res => res.data ? dispatch(setAuth(true)) : null)
+      .catch(err => console.log(err))
+    }, [])
 
     useEffect(() => {
+      
       dispatch(fetchData())
     }, [])
+
 
   return (
     <Routes>
@@ -43,7 +34,7 @@ const App: React.FC = () => {
        <Route path="cart" element={<CartPage />} />
        <Route path="liked" element={<LikedPage />} />
        <Route path="reg" element={<RegPage />} />
-       {/* <Route path="account" element={<AccountPage />} /> */}
+       <Route path="account" element={<AccountPage />} />
     </Routes>
   )
 }

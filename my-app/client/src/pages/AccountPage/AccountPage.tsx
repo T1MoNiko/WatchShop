@@ -1,6 +1,6 @@
 import "./accountPage.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -8,11 +8,19 @@ import { useAppDispatch } from "../../redux/store";
 import { RootState } from "../../redux/store";
 import { ChangeInfo } from "../../redux/PrivatOfficeSlice/types";
 import { setAuth } from "../../redux/PrivatOfficeSlice/PrivatOfficeSlice";
+import { getIsAdmin } from "../../api/userApi";
 
 const AccountPage: React.FC = () => {
+  const [isAdmin, setIsAdmin] = useState(false)
+  const { isAuth } = useSelector((state: RootState) => state.AccountReducer)
+
+  useEffect(() => {
+      getIsAdmin().then(res => setIsAdmin(res))
+  })
+
   return (
     <>
-      <h1>ASkdjsakjdn</h1>
+      {isAdmin ? <h1>idnkjakjwna</h1> : null}
     </>
   )
     

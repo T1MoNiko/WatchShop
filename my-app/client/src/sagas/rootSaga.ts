@@ -4,6 +4,6 @@ import productsSaga from "./productsSaga";
 
 export function* rootSaga() {
     yield all([
-        productsSaga
+        productsSaga()
     ])
 }

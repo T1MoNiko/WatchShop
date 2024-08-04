@@ -23,16 +23,9 @@ const CustomForm = () => {
 
     useEffect(() => {
         if (isAuth) {
-            history('/account')
+            history('/')
         }
     }, [isAuth])
-
-
-    useEffect(() => {
-        instance().post('/auth/profile')
-        .then(res => res.data ? dispatch(setAuth(true)) : null)
-        .catch(err => console.log(err))
-    }, [])
 
     const onSubmitReg = async (formData: Validation) => { 
         // try {
@@ -53,10 +46,11 @@ const CustomForm = () => {
             const {data}: {data: Validation} = await axios.post('http://localhost:5000/user', formData)
             const token: AxiosResponse | null = data ? await axios.post('http://localhost:5000/auth/login', 
                                                     {email: data.email, password: formData.password}) : null
-
             if (token?.data.access_token && typeof window !== 'undefined') {
                 localStorage.setItem('access_token', token.data.access_token)
-                history('/account')
+                dispatch(setAuth(true))
+                history('/')
+                
             }
         } catch(err) {
             console.log(err)
@@ -67,7 +61,8 @@ const CustomForm = () => {
         const { data } = await axios.post('http://localhost:5000/auth/login', formData)
         if (typeof window !== undefined) {
             localStorage.setItem('access_token', data.access_token)
-            history('/account')
+            dispatch(setAuth(true))
+            history('/')
         };
     }
 

@@ -6,26 +6,32 @@ import { useState, useEffect } from "react"
 
 import { ProductCard } from "../product/ProductCard"
 import { Products } from "../../redux/ProductsSlice/types"
+import { useSelector } from "react-redux"
+import { RootState } from "../../redux/store"
 
 
 
 const ProductsPart: React.FC = () => {
     const [res, setRes] = useState<Products[]>([]);
 
-    useEffect(() => {
-        const Response = async () => {
-            try {
-                await fetch("/season.json").then(res => {return res.json()}).then(res => setRes(res))
-            }
-            catch (ex) {
-                if (ex instanceof Error) {
-                    console.log(`Произошла ошибка: ${ex.name} \nПодробнее: ${ex.message}`) 
-                }
-            }
+    // useEffect(() => {
+    //     const Response = async () => {
+    //         try {
+    //             await fetch("/season.json").then(res => {return res.json()}).then(res => setRes(res))
+    //         }
+    //         catch (ex) {
+    //             if (ex instanceof Error) {
+    //                 console.log(`Произошла ошибка: ${ex.name} \nПодробнее: ${ex.message}`) 
+    //             }
+    //         }
             
-        }
-        Response()
-    }, [])
+    //     }
+    //     Response()
+    // }, [])
+
+    const seasonProducts = useSelector((state: RootState) => state.CartAndLikedSliceReducer.products.
+                                                             filter(item => item.isSeasonProduct))
+
 
     return (
         <div className="products-section">
@@ -34,8 +40,8 @@ const ProductsPart: React.FC = () => {
                     <p className="title-season">СЕЗОН 2020/21</p>
                     <div className="line"></div>
                     <div className="products-items">
-                        {res.map((item, i) => {
-                           return <ProductCard title={item.title} key={i} id={item.id} imageUrl={item.imageUrl} price={item.price}/>
+                        {seasonProducts.map(item => {
+                           return <ProductCard name={item.name} key={item.id} id={item.id} img={item.img} price={item.price}/>
                         })}
                     </div>
                 </div>

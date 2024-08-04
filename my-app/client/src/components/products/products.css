@@ -1,12 +1,15 @@
 html {
 	scroll-behavior: smooth;
+    user-select: none;
 }
-
 .products-section {
     width: 100%;
 }
 .products-line {
     display: flex;
+}
+.products-line:nth-child(2) {
+    margin-top: 5vw;
 }
 .title-season {
     color: white;
@@ -17,10 +20,10 @@ html {
 .products-part {
     width: 54.17vw;
     background-color: black;
-    margin-bottom: 4vh;
     display: inline-block;
     text-align: center;
     padding: 0 5.2vw;
+    padding-bottom: 70px;
 }
 .line {
     width: 6.25vw;
@@ -30,13 +33,21 @@ html {
     margin: 40px 0;
 }
 .products-items {
-    display: flex;
-    justify-content: space-between;
+    scrollbar-width: thin;
+    white-space: nowrap;
+    overflow-x: scroll;
     width: 100%;
+    padding-bottom: 20px;
 }
-.products-items > div:nth-child(2) {
-    margin: 0 20px;
-}  
+
+.products-items::-webkit-scrollbar {
+    height: 5px;
+}
+.products-items::-webkit-scrollbar-thumb {
+    background-color: #2f2f2f;
+    width: 20px;
+    border-radius: 4px;
+}
 .product-name { 
     color: white;
     font-size: 1.1vw;
@@ -81,7 +92,7 @@ html {
 }
 
 .pic2 {
-    width: 45.83vw;
+    width: 48.83vw;
 }
 .colaction2018 {
     text-align: center;

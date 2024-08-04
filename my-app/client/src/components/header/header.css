@@ -106,7 +106,7 @@
 .img-with-title {
     height: calc(100vh - 120px);
     max-height: 58vw;
-    background: url("../../../public/img/main-pic.png") center;
+    background: url("../../../public/img/main-pic.jpeg") center;
     background-size: cover;
     -webkit-background-size: cover;
     text-align: center;

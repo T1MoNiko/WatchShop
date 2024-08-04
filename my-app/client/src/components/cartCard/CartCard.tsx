@@ -8,7 +8,7 @@ import { counterDecrement, counterIncrement, deleteFromCart } from "../../redux/
 import { useAppDispatch } from "../../redux/store"
 import { Products } from "../../redux/ProductsSlice/types"
 
-export const CartCard: React.FC<Products> = ({id, title, imageUrl, price, count}) => {
+export const CartCard: React.FC<Products> = ({id, name, img, price, count}) => {
 
     const dispatch = useAppDispatch()
 
@@ -24,9 +24,9 @@ export const CartCard: React.FC<Products> = ({id, title, imageUrl, price, count}
         <>
             <div className="card-product-item">
                 <img onClick={() => dispatch(deleteFromCart(Number(id)))} src="./img/trashcan.png" alt="" className="trashcan-cart" />
-                <img className="cart-img-product-item" src={imageUrl} alt=" "  />
-                <div className="price-and-title-cart">
-                    <p className="cart-product-name">{title}</p>
+                <img className="cart-img-product-item" src={img} alt=" "  />
+                <div className="price-and-name-cart">
+                    <p className="cart-product-name">{name}</p>
                     <p className="cart-product-price">{price} руб.</p>
                 </div>
                 <div className="cart-product-item__counter">

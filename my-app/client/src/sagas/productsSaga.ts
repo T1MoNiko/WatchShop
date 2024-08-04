@@ -1,26 +1,50 @@
 // src/store/userSagas.ts
-import { call, put, take, takeLatest } from 'redux-saga/effects';
+import { call, put, take, takeLatest, all } from 'redux-saga/effects';
 import axios from 'axios';
 import { instance } from '../utils/axiosConfig';
 import { SagaIterator } from 'redux-saga';
 import { useAppDispatch } from '../redux/store';
-import { addToCart, addToLiked, failureData, fetchData } from '../redux/ProductsSlice/ProductsSlice';
+import { addToCart, addToLiked, addToProducts, failureCartData, failureLikedData, failureProductsData, fetchData } from '../redux/ProductsSlice/ProductsSlice';
 
 
 
-function* fetchProductsSaga(): SagaIterator {
-
+function* fetchCartDataSaga(): SagaIterator {
   try {
-    const { data } = yield call(instance().get, '/cart');
-    yield put(addToCart(data));
-    yield put((data));
-  } catch (error) {
-    yield put(failureData(error))
+    const cart = yield call(instance().get, 'products/cart');
+    yield put(addToCart(cart.data));
+  } catch (err) {
+    yield put(failureCartData({status: 500, message: "Ошибка получения данных корзины с сервера"})) 
   }
 }
 
+function* fetchLikedDataSaga(): SagaIterator {
+  try {
+    const liked = yield call(instance().get, 'products/liked');
+    yield put(addToLiked(liked.data));
+  } catch (err) {
+    yield put(failureLikedData({status: 500, message: "Ошибка получения данных понравившихся товаро с сервера"})) 
+  }
+}
+
+function* fetchProductsDataSaga(): SagaIterator {
+  try {
+    const catalogProducts = yield call(instance().get, 'products');
+    yield put(addToProducts(catalogProducts.data));
+  } catch (err) {
+    yield put(failureProductsData({status: 500, message: "Ошибка получения данных корзины с сервера"})) 
+  }
+}
+
+function* fetchFullData() {
+  yield all([
+     call(fetchCartDataSaga),
+     call(fetchLikedDataSaga),
+     call(fetchProductsDataSaga)
+  ])
+}
+
 function* productsSaga() {
-  yield takeLatest(fetchData, fetchProductsSaga)
+  yield takeLatest(fetchData, fetchFullData)
 }
 
 export default productsSaga;
