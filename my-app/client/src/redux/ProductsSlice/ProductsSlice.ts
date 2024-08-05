@@ -47,10 +47,10 @@ const CartAndLikedSlice = createSlice({
             state.products.push(...action.payload)
         },
         deleteFromLiked(state, action: PayloadAction<number>) {
-            state.likedItems = state.likedItems.filter((obj) => Number(obj.id) !== Number(action.payload))
+            state.likedItems = state.likedItems.filter((obj) => Number(obj.product_id) !== Number(action.payload))
         },
         deleteFromCart(state, action: PayloadAction<number>) {
-            state.cartItems = state.cartItems.filter((obj) => Number(obj.id) !== Number(action.payload))
+            state.cartItems = state.cartItems.filter((obj) => Number(obj.product_id) !== Number(action.payload))
         },
         deleteFromProducts(state, action: PayloadAction<number>) {
             state.products = state.products.filter((obj) => Number(obj.id) !== Number(action.payload))

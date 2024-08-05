@@ -1,4 +1,4 @@
-import "./accountPage.css";
+import "./accountPage.scss";
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ const AccountPage: React.FC = () => {
 
   return (
     <>
-      {isAdmin ? <h1>idnkjakjwna</h1> : null}
+      
     </>
   )
     

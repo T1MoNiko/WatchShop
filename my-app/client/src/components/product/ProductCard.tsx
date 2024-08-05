@@ -1,10 +1,11 @@
+import "./productCard.scss"
+
 import React, { useState, useEffect } from "react"
 
 import { addToLiked, deleteFromLiked, addToCart, deleteFromCart } from "../../redux/ProductsSlice/ProductsSlice"
 import { useDispatch } from "react-redux/es/exports"
 import { useSelector } from "react-redux/es/exports"
 import { RootState } from "../../redux/store"
-import "./productCard.css"
 import { Products } from "../../redux/ProductsSlice/types"
 import { instance } from "../../utils/axiosConfig"
 import { useNavigate } from "react-router-dom"

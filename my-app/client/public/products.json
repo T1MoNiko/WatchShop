@@ -1,50 +1,50 @@
 [
     {
         "id": 0,
-        "title": "Louis XVI ATHOS",
+        "name": "Louis XVI ATHOS",
         "price": "165000",
-        "imageUrl": "/img/clock.png" 
+        "img": "/img/clock.png" 
     }, 
     {
         "id": 1,
-        "title": "Louis Balt XX",
+        "name": "Louis Balt XX",
         "price": "10000",
-        "imageUrl": "/img/balt.png" 
+        "img": "/img/balt.png" 
     },   
     {
         "id": 2,
-        "title": "Louis Golden Ring",
+        "name": "Louis Golden Ring",
         "price": "155000",
-        "imageUrl": "/img/ring.png" 
+        "img": "/img/ring.png" 
     },
     {
         "id": 3,
-        "title": "Cufflinks NAZHA",
+        "name": "Cufflinks NAZHA",
         "price": "5000",
-        "imageUrl": "/img/cufflinks.png" 
+        "img": "/img/cufflinks.png" 
     },
     {
         "id": 4,
-        "title": "Louis Bracelet ATHOS",
+        "name": "Louis Bracelet ATHOS",
         "price": "155000",
-        "imageUrl": "/img/bracelet.png" 
+        "img": "/img/bracelet.png" 
     },
     {
         "id": 5,
-        "title": "Louis Blazer ATHOS",
+        "name": "Louis Blazer ATHOS",
         "price": "23000",
-        "imageUrl": "/img/blazer.png" 
+        "img": "/img/blazer.png" 
     },
     {
         "id": 6,
-        "title": "Louis XVI NAZHA",
+        "name": "Louis XVI NAZHA",
         "price": "100000",
-        "imageUrl": "/img/clock2.png" 
+        "img": "/img/clock2.png" 
     },
     {
         "id": 7,
-        "title": "Louis XVI ATHOS",
+        "name": "Louis XVI ATHOS",
         "price": "165000",
-        "imageUrl": "/img/clock.png" 
+        "img": "/img/clock.png" 
     }
   ]

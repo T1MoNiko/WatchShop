@@ -1,20 +1,20 @@
 [
     {
         "id": 8,
-        "title": "Louis XVI ATHOS",
+        "name": "Louis XVI ATHOS",
         "price": "165000",
-        "imageUrl": "/img/clock.png" 
+        "img": "/img/clock.png" 
     }, 
     {
         "id": 9,
-        "title": "Louis XVI NAZHA",
+        "name": "Louis XVI NAZHA",
         "price": "100000",
-        "imageUrl": "/img/clock2.png" 
+        "img": "/img/clock2.png" 
     },   
     {
         "id": 10,
-        "title": "Louis Golden Ring",
+        "name": "Louis Golden Ring",
         "price": "155000",
-        "imageUrl": "/img/ring.png" 
+        "img": "/img/ring.png" 
     }
 ]

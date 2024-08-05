@@ -1,4 +1,4 @@
-import "./newArrivals.css"
+import "./newArrivals.scss"
 
 import React from "react"
 
