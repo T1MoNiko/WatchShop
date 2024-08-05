@@ -1,4 +1,4 @@
-import "./products.css"
+import "./products.scss"
 
 import React from "react"
 

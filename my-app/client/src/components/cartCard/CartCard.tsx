@@ -1,5 +1,5 @@
-import "../../pages/Cart/cartPage.css"
-import "./cartCard.css"
+import "../../pages/Cart/cartPage.scss"
+import "./cartCard.scss"
 
 import React from "react"
 

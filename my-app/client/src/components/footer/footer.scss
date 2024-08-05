@@ -49,9 +49,9 @@ footer {
     width: 60%;
     outline: none;
     font-size: 1vw;
-}
-.input-btn input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+    }
 }
 .line-under-footer {
     width: 69vw;

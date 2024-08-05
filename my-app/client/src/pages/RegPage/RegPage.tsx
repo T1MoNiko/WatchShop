@@ -1,4 +1,4 @@
-import "./regPage.css"
+import "./regPage.scss"
 
 import React from "react";
 

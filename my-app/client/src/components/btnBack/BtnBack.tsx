@@ -1,7 +1,8 @@
+import "./btnBack.scss"
+
 import { Link } from "react-router-dom"
 import React from "react"
 
-import "./btnBack.css"
 
 const BtnBack: React.FC = () => {
     return (

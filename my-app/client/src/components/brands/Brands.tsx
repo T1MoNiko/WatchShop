@@ -1,5 +1,6 @@
+import "./brands.scss"
+
 import React from "react"
-import "./brands.css"
 
 const Brands: React.FC = () => {
     return (

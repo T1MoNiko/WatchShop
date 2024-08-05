@@ -1,3 +1,6 @@
+import "./cartPage.scss"
+
+
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import React from "react"

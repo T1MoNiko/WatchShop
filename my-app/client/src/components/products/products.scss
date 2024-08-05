@@ -1,0 +1,154 @@
+$white-color: white;
+$black-color: black;
+$scrollbar-track-bg: #3b3838;
+$scrollbar-thumb-bg: #2f2f2f;
+$scrollbar-height: 5px;
+$scrollbar-thumb-radius: 4px;
+$transition-duration: 1s;
+$product-padding: 5.2vw;
+$product-padding-bottom: 70px;
+$product-margin-top: 5vw;
+
+@mixin button-style {
+  border: 1px solid $white-color;
+  background: transparent;
+  color: $white-color;
+  cursor: pointer;
+}
+
+html {
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+.products-section {
+  width: 100%;
+}
+
+.products-line {
+  display: flex;
+
+  &:nth-child(2) {
+    margin-top: $product-margin-top;
+  }
+}
+
+.title-season {
+  color: $white-color;
+  text-align: center;
+  font-size: 2vw;
+  margin-top: 10%;
+}
+
+.products-part {
+  width: 54.17vw;
+  background-color: $black-color;
+  display: inline-block;
+  text-align: center;
+  padding: 0 $product-padding;
+  padding-bottom: $product-padding-bottom;
+}
+
+.line {
+  width: 6.25vw;
+  display: inline-block;
+  margin: 0 auto;
+  border-bottom: 1px solid $white-color;
+  margin: 40px 0;
+}
+
+.products-items {
+  scrollbar-width: thin;
+  white-space: nowrap;
+  overflow-x: scroll;
+  width: 100%;
+  padding-bottom: 20px;
+
+  &::-webkit-scrollbar-track {
+    background: $scrollbar-track-bg;
+    border-radius: $scrollbar-thumb-radius; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb-bg;
+    width: 20px;
+    border-radius: $scrollbar-thumb-radius;
+  }
+
+  &::-webkit-scrollbar {
+    height: $scrollbar-height;
+  }
+}
+
+.product-name {
+  color: $white-color;
+  font-size: 1.1vw;
+  text-align: start;
+  margin-top: 1.85vh;
+}
+
+.product-price {
+  color: $white-color;
+  text-align: start;
+  margin-top: 1.85vh;
+  font-size: 1vw;
+}
+
+.new-colaction {
+  background: url("../../../public/img/pic1.png") center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  width: 45.83vw;
+  padding: 5vw 1.2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+
+  .new-colaction-text {
+    color: $white-color;
+    font-size: 2vw;
+  }
+}
+
+.catalog-btn {
+  @include button-style;
+  padding: 0.5vw 1.2vw;
+  font-size: 1.2vw;
+
+  > a {
+    color: $white-color;
+  }
+
+  &:hover,
+  .transition-on-colaction:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transition: $transition-duration;
+  }
+}
+
+.pic2 {
+  width: 48.83vw;
+}
+
+.colaction2018 {
+  text-align: center;
+  margin-top: 4vh;
+
+  .colaction-title {
+    font-size: 2vw;
+  }
+
+  .colaction-text {
+    font-size: 1vw;
+    padding: 0 23%;
+  }
+
+  .transition-on-colaction {
+    @include button-style;
+    background-color: transparent;
+    padding: 1vw 2vw;
+    margin-top: 50px;
+    font-size: 1vw;
+  }
+}
