@@ -1,4 +1,4 @@
-import "./style/style.css"
+import "./style/style.scss"
 import "./style/uikit.css"
 
 import React from 'react';
